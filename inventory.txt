@@ -1,0 +1,94 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+# Ex 1: Ungrouped hosts, specify before any group headers.
+
+localhost ansible_connection=local
+
+# Ex 2: A collection of hosts belonging to the 'webservers' group
+
+[uat]
+cie-tuf-[01:08].intra.oceanobservatories.org
+cie-tui-[01:04].intra.oceanobservatories.org
+cie-tcn-[001:006].intra.oceanobservatories.org
+
+[uat-uframe]
+cie-tuf-[01:08].intra.oceanobservatories.org
+
+[uat-stream_engine]
+cie-tuf-[04:08].intra.oceanobservatories.org
+
+[uat-ui]
+cie-tui-[01:04].intra.oceanobservatories.org
+
+[uat-cassandra]
+cie-tcn-[001:006].intra.oceanobservatories.org
+
+[uat-ingest_handlers]
+cie-tuf-03.intra.oceanobservatories.org 
+
+[uat-edex01]
+cie-tuf-01.intra.oceanobservatories.org 
+
+[uat-opendap]
+cie-tod-01.intra.oceanobservatories.org
+
+[sudo-test]
+ooiufs01.intra.oceanobservatories.org 
+
+[prod]
+ooiufs[01:08].intra.oceanobservatories.org
+cie-ooiui[01:04].intra.oceanobservatories.org
+cie-pcn-[001:021].intra.oceanobservatories.org
+
+[prod-uframe]
+ooiufs[01:08].intra.oceanobservatories.org
+
+[prod-stream_engine]
+ooiufs[04:08].intra.oceanobservatories.org
+
+[prod-ingest_handlers]
+ooiufs03.intra.oceanobservatories.org 
+
+[prod-edex01]
+ooiufs01.intra.oceanobservatories.org 
+
+[prod-14543]
+ooiufs[03:08].intra.oceanobservatories.org
+
+[prod-ui]
+cie-ooiui[01:04].intra.oceanobservatories.org
+
+[prod-cassandra]
+cie-pcn-[001:021].intra.oceanobservatories.org
+
+[prod-opendap]
+cie-opendap-01.intra.oceanobservatories.org
+
+[prod-erddap]
+cie-erddap-[01:04].intra.oceanobservatories.org
+
+[pre-prod-cassandra]
+cie-devcn[001:004].intra.oceanobservatories.org
+
+[dev-uframe-test]
+uframe-[2:6]-test.intra.oceanobservatories.org
+
+[dev-uframe]
+uframe-[2:6].intra.oceanobservatories.org
+
+[pre-prod-opendap]
+cie-opendap-11.intra.oceanobservatories.org
+
+[ooi-redmine_server]
+cie-redmine.intra.oceanobservatories.org
+
+[whoi-redmine_server]
+ooi-redmine.whoi.net

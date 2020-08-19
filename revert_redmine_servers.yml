@@ -1,0 +1,37 @@
+---
+- hosts: whoi-redmine_server
+  gather_facts: False
+  remote_user: pmena
+  become: yes
+  become_user: redmine
+  become_method: su
+  tasks:
+    - name: run a script to gather redmine data from WHOI server
+      script: ./pull_ooi_redmine_data_from_whoi.sh 
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+    - name: run a script to copy redmine data between Rutgers and WHOI
+      script: ./xfer_ooi_redmine_data_to_rutgers.sh 
+
+- hosts: ooi-redmine_server
+  gather_facts: False
+  remote_user: pmena
+  become: yes
+  become_user: redmine
+  become_method: su
+  tasks:
+    - name: run a script to gather redmine data from Rutgers
+      script: ./push_ooi_redmine_data_to_rutgers.sh 
+
+- hosts: whoi-redmine_server
+  gather_facts: False
+  remote_user: pmena
+  become: yes
+  become_user: root
+  become_method: su
+  tasks:
+    - name: run a script to restart postgress and httpd on Rutger server
+      script: ./restart_rutgers_ooi_redmine_servers.sh 

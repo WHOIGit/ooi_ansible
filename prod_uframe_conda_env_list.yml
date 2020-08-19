@@ -1,0 +1,14 @@
+---
+- hosts: prod-uframe
+  gather_facts: False
+  remote_user: pmena
+  become: yes
+  become_user: asadev
+  become_method: su
+  tasks:
+    - name: list current conda environments
+      shell: conda env list | grep -c engine
+      register: shell_result
+
+    - debug:
+        var: shell_result.stdout_lines
